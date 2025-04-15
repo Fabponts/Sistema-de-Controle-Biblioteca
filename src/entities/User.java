@@ -1,9 +1,9 @@
-package atributes;
+package entities;
 
 public class User {
     private String name;
     private int registerNumber;
-    private boolean borrowedBooks;
+
 
     public User(){
     }

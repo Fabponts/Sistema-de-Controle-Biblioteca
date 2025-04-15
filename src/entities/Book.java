@@ -1,5 +1,5 @@
 package entities;
-
+import service.Library;
 import java.util.Scanner;
 
 public class Book {
@@ -8,6 +8,7 @@ public class Book {
     private String title;
     private String author;
     private BookStatus status;
+
     Scanner scan = new Scanner(System.in);
 
     //construtores
@@ -39,11 +40,6 @@ public class Book {
     public void setStatus(){
         this.status = status;
     }
-    //Metodos
-    public String infos() {
-        return "Title: " + getTitle() + "\n" + "Author: " + getAuthor() + "Status: " + getStatus() ;
-    }
-
-    }
+}
 
 

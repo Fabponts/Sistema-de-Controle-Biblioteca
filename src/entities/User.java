@@ -28,8 +28,5 @@ public class User {
     public void setRegisterNumber(int registerNumber) {
         this.registerNumber = registerNumber;
     }
-    public String toString(){
-        return "User created succesfully!" + "\n" + "Welcome to our Library " + getName();
-    }
 }
 

@@ -5,11 +5,14 @@ Este é um sistema simples de controle de biblioteca desenvolvido em **Java** co
 ## 🚀 Funcionalidades
 
 - Adicionar novos livros com título, autor e status
-- Adicionar novos usuários (em desenvolvimento)
+- Adicionar novos usuários
 - Visualizar lista de livros
 - Visualizar lista de usuários
 - Sistema de menu interativo via console
-
+- Remover livros e usuarios(Em desenvolvimento)
+- Adicionar metodos para emprestimo e devoluçao de livros(em desenvolvimento)
+- Salvar os dados da lista(em desenvolvimento)
+  
 ## 🛠 Tecnologias Utilizadas
 
 - Java 8+

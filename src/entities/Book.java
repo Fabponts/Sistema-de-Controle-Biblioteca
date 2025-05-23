@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Scanner;
-
 public class Book {
 
     private String title;
@@ -9,8 +7,6 @@ public class Book {
     private String genre;
     private String editor;
     private BookStatus status;
-
-    Scanner scan = new Scanner(System.in);
 
     public Book(){
     }

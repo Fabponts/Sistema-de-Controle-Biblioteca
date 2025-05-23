@@ -8,9 +8,11 @@ public class LibrarySystemService {
     Scanner scan = new Scanner(System.in);
 
     public void menuOperating() {
+        Library library = new Library();
         switch (menuInteraction()) {
             case 1:
                 System.out.println("Type the Book's datas:");
+                library.addBook();
                 break;
 
             case 2:
@@ -25,10 +27,12 @@ public class LibrarySystemService {
 
             case 4:
                 System.out.println("Verify the book's list: ");
+                library.showAllBooks();
                 break;
 
             case 5:
                 System.out.println("Stopping the program");
+                System.exit(0);
                 break;
 
             default:

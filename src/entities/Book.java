@@ -38,7 +38,7 @@ public class Book {
         return status;
     }
 
-    public void setStatus(){
+    public void setStatus(BookStatus status){
         this.status = status;
     }
 
@@ -56,17 +56,6 @@ public class Book {
 
     public void setEditor(String editor) {
         this.editor = editor;
-    }
-
-    @Override
-    public String toString(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Book title: ").append(getTitle()).append("/n");
-        stringBuilder.append("Book author: ").append(getAuthor()).append("/n");
-        stringBuilder.append("Book genre: ").append(getGenre()).append("/n");
-        stringBuilder.append("Book editor: ").append(getEditor()).append("/n");
-        stringBuilder.append("Book status: ").append(getStatus()).append("/n");
-        return stringBuilder.toString();
     }
 }
 

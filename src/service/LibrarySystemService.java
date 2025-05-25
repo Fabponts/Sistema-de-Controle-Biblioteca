@@ -21,16 +21,22 @@ public class LibrarySystemService {
                 break;
 
             case 3:
-                System.out.println("Verify the member's list:");
-
+                System.out.println("Verifying the member's list:");
+                library.showAllUsers();
                 break;
 
             case 4:
-                System.out.println("Verify the book's list: ");
+                System.out.println("Verifying the book's list: ");
                 library.showAllBooks();
                 break;
 
             case 5:
+
+            case 6:
+
+                break;
+
+            case 7:
                 System.out.println("Stopping the program");
                 System.exit(0);
                 break;

@@ -3,11 +3,14 @@ package view;
 public class LibrarySystemMenu {
 
     public void showLibraryMenu() {
-        System.out.println("-------Welcome to the library system-------");
-        System.out.println("Type 1 to add a new book");
-        System.out.println("Type 2 to add a new User");
-        System.out.println("Type 3 to verify the user's list");
-        System.out.println("Type 4 to verify the book's list");
-        System.out.println("Type 5 to end the tasks");
+        StringBuilder stringBuilderMenu = new StringBuilder();
+        stringBuilderMenu.append("-------Welcome to the library system-------").append("/n");
+        stringBuilderMenu.append("Type 1 to add a new book").append("/n");
+        stringBuilderMenu.append("Type 2 to add a new User").append("/n");
+        stringBuilderMenu.append("Type 3 to verify the user's list").append("/n");
+        stringBuilderMenu.append("Type 4 to add a new User").append("/n");
+        stringBuilderMenu.append("Type 5 to search a book").append("/n");
+        stringBuilderMenu.append("Type 6 to search a user").append("/n");
+        stringBuilderMenu.append("Type 7 to finish the program");
     }
 }

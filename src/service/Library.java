@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class Library {
     Scanner scan = new Scanner(System.in);
+    FileReaderService fileReaderService = new FileReaderService();
+    FileWriterService fileWriterService = new FileWriterService();
 
     private final List<Book> books = new ArrayList<>();
     private final List<User> users = new ArrayList<>();
@@ -26,45 +28,50 @@ public class Library {
     }
 
     public void addBook() {
-        Book book = new Book();
+
 
         System.out.println("How Many Books will be added?");
         int howManyBooksToAdd = scan.nextInt();
+        scan.nextLine();
 
         for (int i = 0; i < howManyBooksToAdd; i++) {
+            Book book = new Book();
+            fileReaderService.readBookFile();
 
-            System.out.println("Add a title: ");
-            book.setTitle(scan.nextLine());
-            System.out.println("Title: " + book.getTitle());
+            String title = scan.nextLine();
+            book.setTitle(title);
 
-            System.out.println("Add the Author: ");
-            book.setAuthor(scan.nextLine());
-            System.out.println("Author:" + book.getAuthor());
+            String author = scan.nextLine();
+            book.setAuthor(author);
 
-            System.out.println("Add the disponibility (AVAILABLE/UNAVAILABLE/RESERVED):");
-            System.out.println("Status: " + BookStatus.valueOf(scan.nextLine().toUpperCase()));
+            String genre = scan.nextLine();
+            book.setGenre(genre);
 
+            String editor = scan.nextLine();
+            book.setEditor(editor);
+
+            book.setStatus(BookStatus.valueOf(scan.nextLine().toUpperCase()));
             books.add(book);
+            fileWriterService.writeBookFile(book);
             System.out.println("Book added successfully");
         }
     }
 
     public void addUser() {
-        User user = new User();
         System.out.println("How many users will be added?");
         int howManyUsers = scan.nextInt();
+        scan.nextLine();
         for (int i = 0; i < howManyUsers; i++) {
+            User user = new User();
+            fileReaderService.readUserFile();
 
-            System.out.println("Add a name: ");
             user.setName(scan.nextLine());
-            System.out.println("Name: " + user.getName());
-
-            System.out.println("Add the Register Number: ");
             user.setRegisterNumber(scan.nextInt());
             scan.nextLine();
-            System.out.println("Register Number:" + user.getRegisterNumber());
 
+            fileWriterService.writeUserFile(user);
             users.add(user);
+
             System.out.println("User added successfully");
         }
     }
@@ -75,7 +82,7 @@ public class Library {
             return;
         }
         for (Book book : books) {
-            System.out.println(book.toString());
+            System.out.println(book);
         }
     }
 
@@ -85,7 +92,7 @@ public class Library {
             return;
         }
         for (User user : users) {
-            System.out.println(user.toString());
+            System.out.println(user);
         }
     }
 }

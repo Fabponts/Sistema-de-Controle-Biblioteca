@@ -1,0 +1,8 @@
+
+User' name: Fabricio
+User's register number: 1
+-----------------------------------
+
+User' name: Joao
+User's register number: 3
+-----------------------------------

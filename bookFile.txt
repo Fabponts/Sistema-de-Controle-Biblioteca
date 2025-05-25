@@ -1,0 +1,19 @@
+
+Book's title: Relatos de um gato viajante
+Book's author: Hiro Arikawa
+Book's genre: Descobrimento Pessoal
+Book's editor: Alfaguara
+Book's status: AVAILABLE
+-----------------------------------
+Book's title: D
+Book's author: D
+Book's genre: D
+Book's editor: S
+Book's status: LOST
+-----------------------------------
+Book's title: 1
+Book's author: 1
+Book's genre: 1
+Book's editor: 1
+Book's status: LOST
+-----------------------------------

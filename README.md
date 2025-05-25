@@ -11,7 +11,9 @@ Este é um sistema simples de controle de biblioteca desenvolvido em **Java** co
 - Sistema de menu interativo via console
 - Remover livros e usuarios(Em desenvolvimento)
 - Adicionar metodos para emprestimo e devoluçao de livros(em desenvolvimento)
-- Salvar os dados da lista(em desenvolvimento)
+- Salvar os dados da lista em um arquivo
+- 🔜 Tratamento de exceções
+- 🔜 Regras de negócio simples
   
 ## 🛠 Tecnologias Utilizadas
 

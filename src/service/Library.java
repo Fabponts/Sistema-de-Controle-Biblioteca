@@ -3,6 +3,7 @@ package service;
 import entities.Book;
 import entities.BookStatus;
 import entities.User;
+import exception.UserException;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -13,6 +14,7 @@ public class Library {
     Scanner scan = new Scanner(System.in);
     FileReaderService fileReaderService = new FileReaderService();
     FileWriterService fileWriterService = new FileWriterService();
+    LibraryRulesService libraryRulesService = new LibraryRulesService();
 
     private final List<Book> books = new ArrayList<>();
     private final List<User> users = new ArrayList<>();
@@ -77,6 +79,9 @@ public class Library {
                 user.setRegisterNumber(scan.nextInt());
                 scan.nextLine();
 
+                libraryRulesService.userNameRule(user);
+                libraryRulesService.userIdRule(user);
+
                 fileWriterService.writeUserFile(user);
                 users.add(user);
 
@@ -84,6 +89,9 @@ public class Library {
             }
         } catch (InputMismatchException e) {
             System.out.println("Wrong type of data inserted. ID must be a number");
+            scan.nextLine();
+        } catch (UserException e) {
+            System.out.println("User error " + e.getMessage());
             scan.nextLine();
         }
     }

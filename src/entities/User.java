@@ -22,7 +22,7 @@ public class User {
         this.name = name;
     }
 
-    public int getRegisterNumber() {
+    public Integer getRegisterNumber() {
         return registerNumber;
     }
 

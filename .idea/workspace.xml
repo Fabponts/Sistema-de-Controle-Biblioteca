@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f70290-246b-43ac-bd67-6270558b4526" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_04_2025_11_22_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/questionaryUser.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/FileWriterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/LibraryRulesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bookFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/BookStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/BookStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/program/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/program/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/questionnaryBook" beforeDir="false" afterPath="$PROJECT_DIR$/src/questionaryBook.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/FileReaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/FileReaderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Library.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/LibrarySystemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/LibrarySystemService.java" afterDir="false" />
@@ -54,18 +52,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/projetosJava/Sistema de Controle Biblioteca/src",
-    "onboarding.tips.debug.path": "F:/projetosJava/Sistema de Controle Biblioteca/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/projetosJava/Sistema de Controle Biblioteca/src&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;F:/projetosJava/Sistema de Controle Biblioteca/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\projetosJava\Sistema de Controle Biblioteca\src" />

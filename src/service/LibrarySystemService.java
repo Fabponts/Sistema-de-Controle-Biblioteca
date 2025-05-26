@@ -3,11 +3,12 @@ package service;
 
 import view.LibrarySystemMenu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LibrarySystemService {
     Scanner scan = new Scanner(System.in);
-    //todo: Corrigir o erro de aumento do numeros de menu
+
     public void menuOperating() {
         Library library = new Library();
         LibrarySystemMenu librarySystemMenu = new LibrarySystemMenu();
@@ -19,7 +20,6 @@ public class LibrarySystemService {
 
             switch (option) {
                 case 1:
-                    System.out.println("Type the Book's datas:");
                     library.addBook();
                     break;
 
@@ -50,20 +50,27 @@ public class LibrarySystemService {
                     break;
 
                 default:
-                    System.out.println("Invalid answer want to type again? y/n");
-                    scan.nextLine();
+                    System.out.println("Invalid option. Please try again.");
+                    break;
             }
         } while (option != 7);
     }
 
     public int menuInteraction() {
         System.out.print("Choose an option: ");
-        while (!scan.hasNextInt()) {
-            System.out.println("Invalid input. Please enter a number.");
-            scan.next();
+        int option = 0;
+
+        try {
+            option = scan.nextInt();
+
+           if (option <= 0 || option > 7){
+               System.out.println("Type a valid option between 1 and 7");
+           }
+       }
+        catch (InputMismatchException e){
+            System.out.println("Please choose a number");
+            scan.nextLine();
         }
-        int option = scan.nextInt();
-        scan.nextLine();
         return option;
     }
 }

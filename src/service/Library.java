@@ -5,6 +5,7 @@ import entities.BookStatus;
 import entities.User;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,72 +30,89 @@ public class Library {
 
     public void addBook() {
 
+        try {
+            int howMany = howManyItems();
+            scan.nextLine();
 
-        System.out.println("How Many Books will be added?");
-        int howManyBooksToAdd = scan.nextInt();
-        scan.nextLine();
+            for (int i = 0; i < howMany; i++) {
+                Book book = new Book();
+                fileReaderService.readBookFile();
 
-        for (int i = 0; i < howManyBooksToAdd; i++) {
-            Book book = new Book();
-            fileReaderService.readBookFile();
+                String title = scan.nextLine();
+                book.setTitle(title);
 
-            String title = scan.nextLine();
-            book.setTitle(title);
+                String author = scan.nextLine();
+                book.setAuthor(author);
 
-            String author = scan.nextLine();
-            book.setAuthor(author);
+                String genre = scan.nextLine();
+                book.setGenre(genre);
 
-            String genre = scan.nextLine();
-            book.setGenre(genre);
+                String editor = scan.nextLine();
+                book.setEditor(editor);
 
-            String editor = scan.nextLine();
-            book.setEditor(editor);
+                book.setStatus(BookStatus.valueOf(scan.nextLine().toUpperCase()));
+                books.add(book);
+                fileWriterService.writeBookFile(book);
+                System.out.println("Book added successfully");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Wrong type of data inserted");
+            scan.nextLine();
 
-            book.setStatus(BookStatus.valueOf(scan.nextLine().toUpperCase()));
-            books.add(book);
-            fileWriterService.writeBookFile(book);
-            System.out.println("Book added successfully");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid status. Type: AVAILABLE,RESERVED,LOST");
         }
     }
 
     public void addUser() {
-        System.out.println("How many users will be added?");
-        int howManyUsers = scan.nextInt();
-        scan.nextLine();
-        for (int i = 0; i < howManyUsers; i++) {
-            User user = new User();
-            fileReaderService.readUserFile();
 
-            user.setName(scan.nextLine());
-            user.setRegisterNumber(scan.nextInt());
+        try {
+            int howMany = howManyItems();
             scan.nextLine();
+            for (int i = 0; i < howMany; i++) {
+                User user = new User();
+                fileReaderService.readUserFile();
 
-            fileWriterService.writeUserFile(user);
-            users.add(user);
+                user.setName(scan.nextLine());
+                user.setRegisterNumber(scan.nextInt());
+                scan.nextLine();
 
-            System.out.println("User added successfully");
+                fileWriterService.writeUserFile(user);
+                users.add(user);
+
+                System.out.println("User added successfully");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Wrong type of data inserted. ID must be a number");
+            scan.nextLine();
         }
+    }
+
+    public int howManyItems() {
+        System.out.println("How many will be added?");
+        int number = 0;
+        try {
+            number = scan.nextInt();
+            if (number <= 0) {
+                System.out.println("Please write a number bigger than O");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number");
+            scan.nextLine();
+        }
+        return number;
     }
 
     public void showAllBooks() {
-        if (books.isEmpty()) {
-            System.out.println("The list is empty");
-            return;
-        }
-        for (Book book : books) {
-            System.out.println(book);
-        }
+        fileReaderService.printBookDataFile();
     }
 
     public void showAllUsers() {
-        if (users.isEmpty()) {
-            System.out.println("The list is empty");
-            return;
-        }
-        for (User user : users) {
-            System.out.println(user);
-        }
+        fileReaderService.printUserDataFile();
     }
+
+
 }
+
 
 

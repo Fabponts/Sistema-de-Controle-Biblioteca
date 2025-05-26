@@ -3,6 +3,8 @@ package view;
 public class LibrarySystemMenu {
     StringBuilder stringBuilderMenu = new StringBuilder();
     public void showLibraryMenu() {
+        stringBuilderMenu.setLength(0);
+
         stringBuilderMenu.append("-------Welcome to the library system-------\n");
         stringBuilderMenu.append("Type 1 to add a new book\n");
         stringBuilderMenu.append("Type 2 to add a new User\n");

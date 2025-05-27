@@ -37,7 +37,7 @@ src/ ├── entities/ │ ├── Book.java │ ├── BookStatus.java �
 - split(), trim(), toLowerCase() – manipulação de strings
 - Controle de fluxo (for, switch, do-while)
 
-✅ Status do Projeto
+## ✅ Status do Projeto
 📌 Em desenvolvimento. Algumas funcionalidades ainda estão sendo implementadas e aprimoradas(A principal funçao do projeto é relembrar conceitos basicos).
 
 👨‍💻 Autor

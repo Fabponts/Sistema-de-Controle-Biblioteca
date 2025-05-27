@@ -16,14 +16,14 @@ Este é um sistema simples de controle de biblioteca desenvolvido em **Java** co
 ### 💻 Linguagem:
 - Java 8+
 
- ###📂 Persistência de Dados:
+ ### 📂 Persistência de Dados:
 - File I/O (Entrada e Saída com Arquivos)
 
-###🧱 Arquitetura / Organização:
+### 🧱 Arquitetura / Organização:
 -Separação em camadas (MVC simplificado)
 src/ ├── entities/ │ ├── Book.java │ ├── BookStatus.java │ └── User.java ├── service/ │ └── Library.java └── program/ └── Main.java
 
-###📋 Boas práticas Java aplicadas:
+### 📋 Boas práticas Java aplicadas:
 - Exceptions personalizadas – UserException, BookException
 - Validação de dados – através da classe LibraryRulesService, validando campos obrigatórios, formatos de strings, etc.
 - Uso de enum – como BookStatus para representar estado do livro

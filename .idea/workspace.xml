@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7f70290-246b-43ac-bd67-6270558b4526" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exception/UserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/LibrarySearchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/BookException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Library.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/LibraryRulesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/LibraryRulesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/userFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

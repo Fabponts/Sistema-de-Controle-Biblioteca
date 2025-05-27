@@ -3,6 +3,7 @@ package service;
 import entities.Book;
 import entities.BookStatus;
 import entities.User;
+import exception.BookException;
 import exception.UserException;
 
 import java.util.ArrayList;
@@ -53,6 +54,9 @@ public class Library {
                 book.setEditor(editor);
 
                 book.setStatus(BookStatus.valueOf(scan.nextLine().toUpperCase()));
+
+                libraryRulesService.validateBookRule(book);
+
                 books.add(book);
                 fileWriterService.writeBookFile(book);
                 System.out.println("Book added successfully");
@@ -61,8 +65,12 @@ public class Library {
             System.out.println("Wrong type of data inserted");
             scan.nextLine();
 
-        } catch (IllegalArgumentException e) {
+        }
+        catch (IllegalArgumentException e) {
             System.out.println("Invalid status. Type: AVAILABLE,RESERVED,LOST");
+        }
+        catch (BookException e) {
+            System.out.println("Book error " + e.getMessage());
         }
     }
 
@@ -79,8 +87,7 @@ public class Library {
                 user.setRegisterNumber(scan.nextInt());
                 scan.nextLine();
 
-                libraryRulesService.userNameRule(user);
-                libraryRulesService.userIdRule(user);
+                libraryRulesService.validateUserRule(user);
 
                 fileWriterService.writeUserFile(user);
                 users.add(user);

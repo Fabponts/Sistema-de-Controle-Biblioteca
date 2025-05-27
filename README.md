@@ -10,14 +10,14 @@ Este é um sistema simples de controle de biblioteca desenvolvido em **Java** co
 - Visualizar lista de usuários
 - Sistema de menu interativo via console
 - Remover livros e usuarios(Em desenvolvimento)
-- Adicionar metodos para emprestimo e devoluçao de livros(em desenvolvimento)
-- Salvar os dados da lista(em desenvolvimento)
+- Salvar os dados da lista
   
 ## 🛠 Tecnologias Utilizadas
-
+### 💻 Linguagem
 - Java 8+
 - Orientação a Objetos (OOP)
 - Estruturas de dados com `ArrayList`
+- 
 
 ## 📦 Estrutura do Projeto
 src/ ├── entities/ │ ├── Book.java │ ├── BookStatus.java │ └── User.java ├── service/ │ └── Library.java └── program/ └── Main.java

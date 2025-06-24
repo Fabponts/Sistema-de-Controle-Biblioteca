@@ -41,5 +41,5 @@ Algumas funcionalidades ainda estão sendo implementadas e aprimoradas(A princip
 ## Licença
 Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais informações.
 
-##👨‍💻 Autor
+## 👨‍💻 Autor
 Desenvolvido por Fabricio Pontes.

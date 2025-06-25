@@ -1,0 +1,155 @@
+Index: src/service/LibraryRulesService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package service;\r\n\r\nimport entities.Book;\r\nimport entities.User;\r\nimport exception.BookException;\r\nimport exception.UserException;\r\n\r\npublic class LibraryRulesService {\r\n\r\n    public void validateUserRule(User user) throws UserException {\r\n        userNameRule(user);\r\n        userIdRule(user);\r\n    }\r\n\r\n    public void validateBookRule(Book book) throws BookException{\r\n        validateBookNameRule(book);\r\n        validateBookAuthorRule(book);\r\n        validateBookGenreRule(book);\r\n    }\r\n\r\n    public void userNameRule(User user) throws UserException {\r\n        if (user.getName().isBlank()) {\r\n            throw new UserException(\"You must insert an user name\");\r\n        }\r\n        if (user.getName().trim().split(\" \").length < 2){\r\n            throw new UserException(\"The name must have a first and last name\");\r\n        }\r\n        if(!user.getName().matches(\"[A-Za-zÀ-ÿ]+\\\\s+[A-Za-zÀ-ÿ]+\")){\r\n            throw new UserException(\"The user name must have letters between A and Z\");\r\n        }\r\n    }\r\n\r\n    public void userIdRule(User user) throws UserException {\r\n        if (user.getRegisterNumber() == null) {\r\n            throw new UserException(\"The id cannot be null\");\r\n        }\r\n    }\r\n\r\n    public void validateBookNameRule(Book book) throws BookException {\r\n        if(book.getTitle().isBlank()){\r\n            throw new BookException(\"You have to add a title\");\r\n        }\r\n        if (!book.getTitle().matches(\"[A-Za-zÀ-ÿ]+\\\\s+[A-Za-zÀ-ÿ]+\")){\r\n            throw new BookException(\"The book's title must have letters between A and Z\");\r\n        }\r\n    }\r\n\r\n    public void validateBookAuthorRule(Book book) throws BookException {\r\n        if (book.getAuthor().isBlank()) {\r\n            throw new BookException(\"You must insert an author name\");\r\n        }\r\n        if (book.getAuthor().trim().split(\" \").length < 2){\r\n            throw new BookException(\"The author's name should have a first and last name\");\r\n        }\r\n        if (!book.getAuthor().matches(\"[A-Za-zÀ-ÿ]+\\\\s+[A-Za-zÀ-ÿ]+\")){\r\n            throw new BookException(\"The author's name must have letters between A and Z\");\r\n        }\r\n    }\r\n\r\n    public void validateBookGenreRule(Book book) throws BookException {\r\n        if (book.getGenre().isBlank()) {\r\n            throw new BookException(\"You must insert a book genre\");\r\n        }\r\n        if (!book.getGenre().matches(\"[A-Za-zÀ-ÿ]+\\\\s+[A-Za-zÀ-ÿ]+\")){\r\n            throw new BookException(\"The book's genre must have letters between A and Z\");\r\n        }\r\n    }\r\n\r\n    public void validateBookEditorRule(Book book) throws BookException {\r\n        if (book.getEditor().isBlank()) {\r\n            throw new BookException(\"You must insert a book editor\");\r\n        }\r\n        if (!book.getEditor().matches(\"[A-Za-zÀ-ÿ]+\\\\s+[A-Za-zÀ-ÿ]+\")){\r\n            throw new BookException(\"The book's editor must have letters between A and Z\");\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/service/LibraryRulesService.java b/src/service/LibraryRulesService.java
+--- a/src/service/LibraryRulesService.java	(revision 164504777287e4d919d927082b955ec43500fe7d)
++++ b/src/service/LibraryRulesService.java	(date 1748363226981)
+@@ -16,6 +16,7 @@
+         validateBookNameRule(book);
+         validateBookAuthorRule(book);
+         validateBookGenreRule(book);
++        validateBookEditorRule(book);
+     }
+ 
+     public void userNameRule(User user) throws UserException {
+Index: src/service/LibrarySystemService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package service;\r\n\r\n\r\nimport view.LibrarySystemMenu;\r\n\r\nimport java.util.InputMismatchException;\r\nimport java.util.Scanner;\r\n\r\npublic class LibrarySystemService {\r\n    Scanner scan = new Scanner(System.in);\r\n\r\n    public void menuOperating() {\r\n        Library library = new Library();\r\n        LibrarySystemMenu librarySystemMenu = new LibrarySystemMenu();\r\n\r\n        int option;\r\n        do {\r\n            librarySystemMenu.showLibraryMenu();\r\n            option = menuInteraction();\r\n\r\n            switch (option) {\r\n                case 1:\r\n                    library.addBook();\r\n                    break;\r\n\r\n                case 2:\r\n                    library.addUser();\r\n                    break;\r\n\r\n                case 3:\r\n                    System.out.println(\"Printing all members:\");\r\n                    library.showAllUsers();\r\n                    break;\r\n\r\n                case 4:\r\n                    System.out.println(\"Printing all books: \");\r\n                    library.showAllBooks();\r\n                    break;\r\n\r\n                case 5:\r\n                    System.out.println(\"Search for a book:\");\r\n                    break;\r\n                case 6:\r\n                    System.out.println(\"Search for a user\");\r\n                    break;\r\n\r\n                case 7:\r\n                    System.out.println(\"Stopping the program\");\r\n                    System.exit(0);\r\n                    break;\r\n\r\n                default:\r\n                    System.out.println(\"Invalid option. Please try again.\");\r\n                    break;\r\n            }\r\n        } while (option != 7);\r\n    }\r\n\r\n    public int menuInteraction() {\r\n        System.out.print(\"Choose an option: \");\r\n        int option = 0;\r\n\r\n        try {\r\n            option = scan.nextInt();\r\n\r\n           if (option <= 0 || option > 7){\r\n               System.out.println(\"Type a valid option between 1 and 7\");\r\n           }\r\n       }\r\n        catch (InputMismatchException e){\r\n            System.out.println(\"Please choose a number\");\r\n            scan.nextLine();\r\n        }\r\n        return option;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/service/LibrarySystemService.java b/src/service/LibrarySystemService.java
+--- a/src/service/LibrarySystemService.java	(revision 164504777287e4d919d927082b955ec43500fe7d)
++++ b/src/service/LibrarySystemService.java	(date 1750809804301)
+@@ -38,13 +38,6 @@
+                     break;
+ 
+                 case 5:
+-                    System.out.println("Search for a book:");
+-                    break;
+-                case 6:
+-                    System.out.println("Search for a user");
+-                    break;
+-
+-                case 7:
+                     System.out.println("Stopping the program");
+                     System.exit(0);
+                     break;
+@@ -53,7 +46,7 @@
+                     System.out.println("Invalid option. Please try again.");
+                     break;
+             }
+-        } while (option != 7);
++        } while (option != 5);
+     }
+ 
+     public int menuInteraction() {
+Index: src/view/LibrarySystemMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\r\n\r\npublic class LibrarySystemMenu {\r\n    StringBuilder stringBuilderMenu = new StringBuilder();\r\n    public void showLibraryMenu() {\r\n        stringBuilderMenu.setLength(0);\r\n\r\n        stringBuilderMenu.append(\"-------Welcome to the library system-------\\n\");\r\n        stringBuilderMenu.append(\"Type 1 to add a new book\\n\");\r\n        stringBuilderMenu.append(\"Type 2 to add a new User\\n\");\r\n        stringBuilderMenu.append(\"Type 3 to print the user list\\n\");\r\n        stringBuilderMenu.append(\"Type 4 to print the book listk\\n\");\r\n        stringBuilderMenu.append(\"Type 5 to search a book\\n\");\r\n        stringBuilderMenu.append(\"Type 6 to search an user\\n\");\r\n        stringBuilderMenu.append(\"Type 7 to exit the program\\n\");\r\n\r\n        System.out.println(stringBuilderMenu);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/LibrarySystemMenu.java b/src/view/LibrarySystemMenu.java
+--- a/src/view/LibrarySystemMenu.java	(revision 164504777287e4d919d927082b955ec43500fe7d)
++++ b/src/view/LibrarySystemMenu.java	(date 1750809782034)
+@@ -10,9 +10,7 @@
+         stringBuilderMenu.append("Type 2 to add a new User\n");
+         stringBuilderMenu.append("Type 3 to print the user list\n");
+         stringBuilderMenu.append("Type 4 to print the book listk\n");
+-        stringBuilderMenu.append("Type 5 to search a book\n");
+-        stringBuilderMenu.append("Type 6 to search an user\n");
+-        stringBuilderMenu.append("Type 7 to exit the program\n");
++        stringBuilderMenu.append("Type 5 to exit the program\n");
+ 
+         System.out.println(stringBuilderMenu);
+     }
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># \uD83D\uDCDA Library Management System\r\n\r\nEste é um sistema simples de controle de biblioteca desenvolvido em **Java** como parte de um projeto de estudo. Ele permite cadastrar livros, usuários e visualizar listas armazenadas em memória.\r\n\r\n## \uD83D\uDE80 Funcionalidades\r\n\r\n- Adicionar novos livros com título, autor e status\r\n- Adicionar novos usuários\r\n- Visualizar lista de livros\r\n- Visualizar lista de usuários\r\n- Sistema de menu interativo via console\r\n- Remover livros e usuarios(Em desenvolvimento)\r\n- Adicionar metodos para emprestimo e devoluçao de livros(em desenvolvimento)\r\n- Salvar os dados da lista(em desenvolvimento)\r\n  \r\n## \uD83D\uDEE0 Tecnologias Utilizadas\r\n\r\n- Java 8+\r\n- Orientação a Objetos (OOP)\r\n- Estruturas de dados com `ArrayList`\r\n\r\n## \uD83D\uDCE6 Estrutura do Projeto\r\nsrc/ ├── entities/ │ ├── Book.java │ ├── BookStatus.java │ └── User.java ├── service/ │ └── Library.java └── program/ └── Main.java\r\n\r\n✅ Status do Projeto\r\n\uD83D\uDCCC Em desenvolvimento. Algumas funcionalidades ainda estão sendo implementadas e aprimoradas(A principal funçao do projeto é relembrar conceitos basicos).\r\n\r\n\uD83D\uDC68\u200D\uD83D\uDCBB Autor\r\nDesenvolvido por Fabricio Pontes.\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision 164504777287e4d919d927082b955ec43500fe7d)
++++ b/README.md	(date 1750810068265)
+@@ -1,5 +1,7 @@
+ # 📚 Library Management System
++![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+ 
++## Descrição
+ Este é um sistema simples de controle de biblioteca desenvolvido em **Java** como parte de um projeto de estudo. Ele permite cadastrar livros, usuários e visualizar listas armazenadas em memória.
+ 
+ ## 🚀 Funcionalidades
+@@ -11,10 +13,20 @@
+ - Sistema de menu interativo via console
+ - Remover livros e usuarios(Em desenvolvimento)
+ - Adicionar metodos para emprestimo e devoluçao de livros(em desenvolvimento)
+-- Salvar os dados da lista(em desenvolvimento)
+-  
++- Salvar os dados da lista em um arquivo
++-  Tratamento de exceções
++-  Regras de negócio simples
++
++## Instrução de instalação
++### Pré-requisitos
++- Java 8+
++
++### Etapas
++```bash
++https://github.com/Fabponts/Sistema-de-Controle-Biblioteca.git
++```
++
+ ## 🛠 Tecnologias Utilizadas
+-
+ - Java 8+
+ - Orientação a Objetos (OOP)
+ - Estruturas de dados com `ArrayList`
+@@ -22,8 +34,12 @@
+ ## 📦 Estrutura do Projeto
+ src/ ├── entities/ │ ├── Book.java │ ├── BookStatus.java │ └── User.java ├── service/ │ └── Library.java └── program/ └── Main.java
+ 
+-✅ Status do Projeto
+-📌 Em desenvolvimento. Algumas funcionalidades ainda estão sendo implementadas e aprimoradas(A principal funçao do projeto é relembrar conceitos basicos).
++## ✅ Status do Projeto
++📌 Em desenvolvimento. 
++Algumas funcionalidades ainda estão sendo implementadas e aprimoradas(A principal funçao do projeto é relembrar conceitos basicos).
+ 
+-👨‍💻 Autor
++## Licença
++Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais informações.
++
++## 👨‍💻 Autor
+ Desenvolvido por Fabricio Pontes.
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c7f70290-246b-43ac-bd67-6270558b4526\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/exception/BookException.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/service/Library.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/service/Library.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/service/LibraryRulesService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/service/LibraryRulesService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/userFile.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/userFile.txt\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Fabponts&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/Fabponts/Sistema-de-Controle-Biblioteca.git&quot;,\r\n    &quot;accountId&quot;: &quot;231958b2-f6af-4ae5-8bf7-ae17f1897b60&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ueGJbbqybwOPWYFNgQAqkpzhQJ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;F:/projetosJava/Sistema de Controle Biblioteca/src&quot;,\r\n    &quot;onboarding.tips.debug.path&quot;: &quot;F:/projetosJava/Sistema de Controle Biblioteca/src/Main.java&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"F:\\projetosJava\\Sistema de Controle Biblioteca\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"program.Main\" />\r\n      <module name=\"Sistema de Controle Biblioteca\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"program.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c7f70290-246b-43ac-bd67-6270558b4526\" name=\"Changes\" comment=\"\" />\r\n      <created>1742601558089</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1742601558089</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 164504777287e4d919d927082b955ec43500fe7d)
++++ b/.idea/workspace.xml	(date 1750809804360)
+@@ -5,11 +5,11 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c7f70290-246b-43ac-bd67-6270558b4526" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/exception/BookException.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/service/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Library.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/service/LibraryRulesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/LibraryRulesService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/userFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/userFile.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/service/LibrarySearchService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/service/LibrarySystemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/LibrarySystemService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/view/LibrarySystemMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LibrarySystemMenu.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />

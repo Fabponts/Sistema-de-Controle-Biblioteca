@@ -14,8 +14,8 @@ Este é um sistema simples de controle de biblioteca desenvolvido em **Java** co
 - Remover livros e usuarios(Em desenvolvimento)
 - Adicionar metodos para emprestimo e devoluçao de livros(em desenvolvimento)
 - Salvar os dados da lista em um arquivo
-- 🔜 Tratamento de exceções
-- 🔜 Regras de negócio simples
+-  Tratamento de exceções
+-  Regras de negócio simples
 
 ## Instrução de instalação
 ### Pré-requisitos

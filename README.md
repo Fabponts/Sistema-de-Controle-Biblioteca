@@ -1,4 +1,4 @@
-# 📚 Library Management System
+# 📚 Library Management System V.1
 
 Este é um sistema simples de controle de biblioteca desenvolvido em **Java** como parte de um projeto de estudo. Ele permite cadastrar livros, usuários e visualizar listas armazenadas em memória.
 
